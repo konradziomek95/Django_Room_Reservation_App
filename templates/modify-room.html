@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<! header >
+<header>
+    <h1 class="text-center ">Conference room reservation system</h1>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" href="/room/list">Available Rooms</a>
+                    <a class="nav-link" href=/room/new>Add new</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <form class="m-5 pb-5 border rounded border-dark " method="post">
+        <h4 class="text-center p-4">Edit conference room</h4>
+        <div class="row m-5">
+            <input type="text" class="form-control " placeholder="Name" aria-label="First name" name="name"
+                   value="{{ room.name }}">
+        </div>
+        <div class="row m-5">
+            <input type="number" min="1" step="1" class="form-control" placeholder="Capacity" aria-label="Capacity"
+                   name="capacity" value="{{ room.capacity }}">
+        </div>
+        <div class="form-check m-5 ">
+            <input class="form-check-input" type="checkbox" name="projector_available" value="True"
+                    {% if room.projector %} checked {% endif %}
+                   id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Projector
+            </label>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-dark ">Submit</button>
+        </div>
+    </form>
+</div>
+{% if error %}
+    <!-- Form error -->
+    <div class="alert alert-warning alert-dismissible fade show  text-center" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ error }}
+    </div>
+    <!-- Form error -->
+{% endif %}
+<footer class="footer">
+    Author: Konrad Ziomek
+</footer>
+
+</body>
+</html>
