@@ -41,6 +41,7 @@
         </div>
     </nav>
 </header>
+<div class="container mt-5" >
 <table class="table table-striped table-bordered ">
     <thead class="table-dark">
     <tr>
@@ -62,13 +63,16 @@
             {% else %}
                 <td class="text-center">&#10060;</td>
             {% endif %}
-            <td class="col-md-auto"><a href="/room/modify/{{ room.id }}" class="link-primary">Edit</a>
+            <td class="col-md-auto">
+                <a href="/room/modify/{{ room.id }}" class="link-primary">Edit</a>
                 <a href="/room/delete/{{ room.id }}" class="link-danger">Delate</a>
-                <a href="/room/reserve/{{ room.id }}" class="link-success">Reserve</a></td>
+                <a href="/room/reserve/{{ room.id }}" class="link-success">Reserve</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
 </table>
+</div>
 <footer class="footer">
     Author: Konrad Ziomek
 </footer>

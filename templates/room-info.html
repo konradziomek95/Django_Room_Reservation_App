@@ -41,7 +41,59 @@
         </div>
     </nav>
 </header>
-
+<div class="container " style="width: 40rem;">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-center ">{{ room.name }}</h4>
+            <table class="container  ">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">Capacity</th>
+                    <th scope="col" class="text-center">Projector</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="text-center ">{{ room.capacity }}</td>
+                    {% if room.projector %}
+                        <td class="text-center">&#x2705;</td>
+                    {% else %}
+                        <td class="text-center">&#10060;</td>
+                    {% endif %}
+                </tr>
+                </tbody>
+            </table>
+            <div class="row m-5">
+                <div class="col text-center">
+                    <a href="/room/modify/{{ room.id }}" class="link-primary">Edit</a></div>
+                <div class="col text-center">
+                    <a href="/room/delete/{{ room.id }}" class="link-danger">Delate</a></div>
+                <div class="col text-center">
+                    <a href="/room/reserve/{{ room.id }}" class="link-success">Reserve</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container table-bordered" style="width:60rem">
+    <table class="table mt-5">
+        <thead class="table-secondary ">
+        <tr>
+            <th  class=" col-1 text-center">ID</th>
+            <th  class=" col-3 text-center">Date</th>
+            <th  class="col-5 text-center">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td class="text-center">{{ reservation.id }}</td>
+                <td class="text-center">{{ reservation.date }}</td>
+                <td class="text-center">{{ reservation.comment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 <footer class="footer">
     Author: Konrad Ziomek
 </footer>
