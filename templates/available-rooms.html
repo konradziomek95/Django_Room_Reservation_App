@@ -49,6 +49,7 @@
         <th scope="col" class="col-3 text-center">Name</th>
         <th scope="col" class="text-center">Capacity</th>
         <th scope="col" class="text-center">Projector</th>
+        <th class="text-center"> Today</th>
         <th scope="col" class="col-2 text-center">Options</th>
     </tr>
     </thead>
@@ -62,6 +63,11 @@
                 <td class="text-center">&#x2705;</td>
             {% else %}
                 <td class="text-center">&#10060;</td>
+            {% endif %}
+            {% if room.availability %}
+            <td class="text-center text-danger">Reserved</td>
+            {% else %}
+            <td class="text-center text-success">Available</td>
             {% endif %}
             <td class="col-md-auto">
                 <a href="/room/modify/{{ room.id }}" class="link-primary">Edit</a>

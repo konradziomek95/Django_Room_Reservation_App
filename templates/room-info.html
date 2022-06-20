@@ -74,7 +74,9 @@
         </div>
     </div>
 </div>
+{% if reservations %}
 <div class="container table-bordered" style="width:60rem">
+    <h3 class=" text-center mt-4">Taken reservations</h3>
     <table class="table mt-5">
         <thead class="table-secondary ">
         <tr>
@@ -94,6 +96,7 @@
         </tbody>
     </table>
 </div>
+{% endif %}
 <footer class="footer">
     Author: Konrad Ziomek
 </footer>

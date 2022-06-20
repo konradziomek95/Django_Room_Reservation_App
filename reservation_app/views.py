@@ -47,6 +47,10 @@ class NewRoom(View):
 class RoomList(View):
     def get(self, request):
         rooms = Room.objects.all()
+        for room in rooms:
+            reservation_today = Reservation.objects.filter(room_id=room.id).filter(date=datetime.date.today())
+            if reservation_today:
+                room.availability = True
         ctx = {
             'rooms': rooms,
         }
@@ -108,7 +112,8 @@ class ModifyRoom(View):
 class NewReservation(View):
     def get(self, request, id):
         room = Room.objects.get(id=id)
-        return render(request, 'add-reservation.html', {'room': room})
+        reservations = Reservation.objects.filter(room_id=id, date__gte=datetime.date.today())
+        return render(request, 'add-reservation.html', {'room': room, 'reservations': reservations})
 
     def post(self, request, id):
         room = Room.objects.get(id=id)

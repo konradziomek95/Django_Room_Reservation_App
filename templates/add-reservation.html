@@ -57,6 +57,29 @@
         </div>
     </form>
 </div>
+{% if reservations %}
+<div class="container table-bordered" style="width:60rem">
+    <h3 class=" text-center mt-4">Taken reservations</h3>
+    <table class="table mt-5">
+        <thead class="table-secondary ">
+        <tr>
+            <th class=" col-1 text-center">ID</th>
+            <th class=" col-3 text-center">Date</th>
+            <th class="col-5 text-center">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td class="text-center">{{ reservation.id }}</td>
+                <td class="text-center">{{ reservation.date }}</td>
+                <td class="text-center">{{ reservation.comment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
 {% if error %}
     <!-- Form error -->
     <div class="alert alert-warning alert-dismissible fade show  text-center" role="alert">
